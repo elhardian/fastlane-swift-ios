@@ -1,0 +1,18 @@
+name: Build Application 🚀🚀
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-application:
+    runs-on: [self-hosted, robot-selenium-py]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deintegrate cocoapod
+        run: pod deintegrate
+      - name: fastlane build application
+        run: |
+          fastlane build_project
