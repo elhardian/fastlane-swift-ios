@@ -1,0 +1,19 @@
+default_platform(:ios)
+
+PROJECT_NAME = ENV["PROJECT_NAME"]
+
+platform :ios do
+  lane :build_project do
+    cocoapods(clean_install:true)
+
+    build_app(
+      workspace: "./#{PROJECT_NAME}.xcworkspace",
+      scheme: PROJECT_NAME,
+      configuration: "Debug",
+      derived_data_path: "build",
+      skip_package_ipa: true,
+      skip_archive: true,
+      xcargs: "ONLY_ACTIVE_ARCH=YES"
+    )
+  end
+end
