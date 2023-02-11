@@ -8,7 +8,7 @@ on:
 
 jobs:
   build-application:
-    runs-on: [self-hosted, robot-selenium-py]
+    runs-on: [self-hosted, fastlane-swift-ios]
     steps:
       - uses: actions/checkout@v3
       - name: Deintegrate cocoapod
@@ -16,3 +16,8 @@ jobs:
       - name: fastlane build application
         run: |
           fastlane build_project
+      - name: Archive .app ouput
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-coverage-report
+          path: output/Build/Products/Debug-iphonesimulator/FirebaseStarterApp.app

@@ -7,10 +7,10 @@ platform :ios do
     cocoapods(clean_install:true)
 
     build_app(
-      workspace: "./#{PROJECT_NAME}.xcworkspace",
-      scheme: PROJECT_NAME,
+      workspace: "./FirebaseStarterApp.xcworkspace",
+      scheme: "FirebaseStarterApp",
       configuration: "Debug",
-      derived_data_path: "build",
+      derived_data_path: "output",
       skip_package_ipa: true,
       skip_archive: true,
       xcargs: "ONLY_ACTIVE_ARCH=YES"
